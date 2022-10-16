@@ -1,0 +1,53 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="index">
+    <view class="index-hd">
+      <image style="height: 100px; background-color: #ffffff;" show-menu-by-longpress='1' bindtap='bindClickImg' mode='aspectFit' src="{{imgPath}}"></image>
+      <form bindsubmit="bindGenerate" bindreset="bindReset"> 
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell">
+            <input class="weui-input" type="text" bindinput="bindPromptInput" placeholder="输入正面描述关键词（限长225个长度）。"/>
+          </view>
+          <view class="weui-cell">
+            <input class="weui-input" type="text" bindinput="bindNPromptInput" placeholder="输入负面描述关键词（限长225个长度）。"/>
+          </view>
+          <view class="weui-cell">
+            <input class="weui-input" type="number" bindinput="bindSeedInput" placeholder="输入特定种子（默认随机种子）"/>
+          </view>
+        </view>
+        <view class="section">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cells__title">分辨率</view>
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <view class="weui-label">当前选择：</view>
+              </view>
+              <view class="weui-cell__hd">
+                <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                  <view class="picker">
+                    {{multiArray[0][multiIndex[0]]}} x {{multiArray[1][multiIndex[1]]}}
+                  </view>
+                </picker>
+              </view>
+            </view>         
+          </view>
+        </view>
+        <view class="section section_gap">
+          <view class="weui-cells weui-cells_after-title">
+            <text class="section__title">设置采样步数</text>
+              <view class="body-view">
+                  <slider bindchange="slider1change"min="1" max="150" value="{{sampleStep}}" show-value left-icon="cancel" right-icon="success_no_circle"/>
+              </view>
+              <text class="section__title">设置采样规模</text>
+              <view class="body-view">
+                  <slider bindchange="slider2change"min="1" max="30" value="{{scale}}" show-value left-icon="cancel" right-icon="success_no_circle"/>
+              </view>  
+          </view>                      
+        </view>
+        <view class="weui-cell">
+          <button type="primary" form-type="submit" >生成</button>        
+        </view>    
+        <button type="default" plain="true" form-type="reset" >重置</button>
+      </form>
+    </view>
+  </view>
+</view>

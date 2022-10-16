@@ -1,0 +1,12 @@
+/*@import "../dist/style/weui.wxss";*/
+
+.weui-agree__link {
+  display: inline;
+  color: var(--weui-LINK);
+}
+slider{margin-bottom:30px}
+.index-hd {
+  padding: 5px;
+  text-align: center;
+}
+
